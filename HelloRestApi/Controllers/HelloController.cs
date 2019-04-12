@@ -40,7 +40,7 @@ namespace HelloRestApi.Controllers
             return Created(new Uri(Request.Path + "/" + (_messeges.Count-1).ToString(),UriKind.Relative),value);
         }
 
-        // PUT api/values/5
+        // PUT api/hello/5
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] string value)
         {
