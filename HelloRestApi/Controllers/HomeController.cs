@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HelloWebPage.Models;
+using HelloRestApi.Model;
 
 namespace HelloWebPage.Controllers
 {

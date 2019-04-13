@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Post";
+}
+
+<h1>Post</h1>
+
+<form action="/home/post" method="post">
+    <div class="form-group">
+        <label for="author">Message author</label>
+        <input type="text" class="form-control" id="author" aria-describedby="authorHelp" placeholder="Enter message author" name="Author">
+        <small id="authorHelp" class="form-text text-muted">It's so we know who to blame.</small>
+    </div>
+    <div class="form-group">
+        <label for="messageArea">Message</label>
+        <textarea class="form-control" id="messageArea" placeholder="Your message" name="Message"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

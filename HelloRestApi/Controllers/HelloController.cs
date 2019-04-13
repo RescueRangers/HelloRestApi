@@ -1,4 +1,5 @@
 ﻿using HelloRestApi.Model;
+using HelloRestApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,33 +12,44 @@ namespace HelloRestApi.Controllers
     [ApiController]
     public class HelloController : ControllerBase
     {
-        private static List<Hello> _messeges = new List<Hello>();
+        private readonly HelloRestApiContext _context;
+
+        public HelloController (HelloRestApiContext context)
+        {
+            _context = context;
+        }
 
         // GET api/hello
         [HttpGet]
         public ActionResult<IEnumerable<Hello>> GetHello()
         {
-            return Ok(_messeges);
+            var messeges = _context.Hello;
+            return Ok(messeges);
         }
 
         // GET api/hello/5
         [HttpGet("{id}")]
         public ActionResult<Hello> Get(int id)
         {
-            if (_messeges.Count < id+1)
+            var message = _context.Hello.Select(m => m.ID == id);
+
+            if (message == null)
             {
                 return StatusCode(400, "Bad request");
             }
 
-            return Ok(_messeges[id]);
+            return Ok(message);
         }
 
         // POST api/hello
         [HttpPost]
         public ActionResult Post([FromBody] Hello value)
         {
-            _messeges.Add(value);
-            return Created(new Uri(Request.Path + "/" + (_messeges.Count-1).ToString(),UriKind.Relative),value);
+            if (ModelState.IsValid)
+            {
+                _context.Hello.Add(value);
+            }
+            return Created(new Uri(Request.Path + "/" + (_context.Hello.Last().ID).ToString(),UriKind.Relative),value);
         }
 
         // PUT api/hello/5

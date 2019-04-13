@@ -7,14 +7,13 @@ namespace HelloRestApi.Model
 {
     public class Hello
     {
+        public int ID { get; set; }
         public string Message { get; set; }
         public string Author { get; set; }
         public DateTime TimeStamp { get; set; }
 
-        public Hello(string message, string author)
+        public Hello()
         {
-            Message = message;
-            Author = author;
             TimeStamp = DateTime.Now;
         }
     }
