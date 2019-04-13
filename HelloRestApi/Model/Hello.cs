@@ -9,11 +9,13 @@ namespace HelloRestApi.Model
     {
         public string Message { get; set; }
         public string Author { get; set; }
+        public DateTime TimeStamp { get; set; }
 
         public Hello(string message, string author)
         {
             Message = message;
             Author = author;
+            TimeStamp = DateTime.Now;
         }
     }
 }
