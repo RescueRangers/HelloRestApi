@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HelloRestApi.Model;
 using HelloRestApi.Models;
+using HelloRestApi.ViewModels;
 
 namespace HelloRestApi.Controllers
 {
@@ -22,7 +23,9 @@ namespace HelloRestApi.Controllers
         // GET: Helloes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Hello.ToListAsync());
+            var myViewModel = new ChatViewModel { Helloes = await _context.Hello.ToListAsync() };
+
+            return View(myViewModel);
         }
 
         // GET: Helloes/Details/5

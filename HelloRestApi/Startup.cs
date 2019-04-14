@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using HelloRestApi.Models;
+using HelloRestApi.Hubs;
 
 namespace HelloRestApi
 {
@@ -37,6 +38,8 @@ namespace HelloRestApi
 
             services.AddDbContext<HelloRestApiContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("HelloRestApiContext")));
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +58,12 @@ namespace HelloRestApi
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
+            app.UseMvc();
 
             app.UseMvc(routes =>
             {

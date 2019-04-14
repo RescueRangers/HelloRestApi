@@ -1,6 +1,8 @@
-﻿using HelloRestApi.Model;
+﻿using HelloRestApi.Hubs;
+using HelloRestApi.Model;
 using HelloRestApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +23,17 @@ namespace HelloRestApi.Controllers
 
         // GET api/hello
         [HttpGet]
-        public ActionResult<IEnumerable<Hello>> GetHello()
+        public async Task<ActionResult<IEnumerable<Hello>>> GetHello()
         {
-            var messeges = _context.Hello;
+            var messeges = await _context.Hello.ToListAsync();
             return Ok(messeges);
         }
 
         // GET api/hello/5
         [HttpGet("{id}")]
-        public ActionResult<Hello> Get(int id)
+        public async Task<ActionResult<Hello>> Get(int id)
         {
-            var message = _context.Hello.Select(m => m.ID == id);
+            var message = await _context.Hello.FirstOrDefaultAsync(m => m.ID == id);
 
             if (message == null)
             {
@@ -43,11 +45,12 @@ namespace HelloRestApi.Controllers
 
         // POST api/hello
         [HttpPost]
-        public ActionResult Post([FromBody] Hello value)
+        public async Task<ActionResult> Post([FromBody] Hello value)
         {
             if (ModelState.IsValid)
             {
                 _context.Hello.Add(value);
+                await _context.SaveChangesAsync();
             }
             return Created(new Uri(Request.Path + "/" + (_context.Hello.Last().ID).ToString(),UriKind.Relative),value);
         }
