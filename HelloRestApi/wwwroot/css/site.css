@@ -66,7 +66,7 @@ body {
 .chat_ib h5 {
     font-size: 15px;
     color: #464646;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
 }
 
 .chat_ib h5 span {
@@ -162,7 +162,7 @@ body {
 
 .outgoing_msg {
     overflow: hidden;
-    margin: 26px 0 26px;
+    margin: 26px 0;
 }
 
 .sent_msg {
@@ -199,7 +199,7 @@ body {
 }
 
 .messaging {
-    padding: 0 0 50px 0;
+    padding: 0 0 50px;
 }
 
 .msg_history {
