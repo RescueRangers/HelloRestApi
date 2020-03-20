@@ -2,71 +2,77 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
 }
+
 
 /* CHat CSS */
 
 .chat_ib h5 {
     font-size: 15px;
     color: #464646;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
 }
 
-    .chat_ib h5 span {
-        font-size: 13px;
-        float: right;
-    }
+.chat_ib h5 span {
+    font-size: 13px;
+    float: right;
+}
 
 .chat_ib p {
     font-size: 14px;
@@ -156,7 +162,7 @@ body {
 
 .outgoing_msg {
     overflow: hidden;
-    margin: 26px 0 26px;
+    margin: 26px 0;
 }
 
 .sent_msg {
@@ -193,12 +199,13 @@ body {
 }
 
 .messaging {
-    padding: 0 0 50px 0;
+    padding: 0 0 50px;
 }
 
 .msg_history {
     height: 516px;
     overflow-y: auto;
 }
+
 
 /* End of Chat CSS */
